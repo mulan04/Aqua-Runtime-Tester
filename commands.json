@@ -1,0 +1,22 @@
+[
+   {
+       "label": "Drift Prevention (installing nmap and nc)",
+       "command": "apt update && apt install nmap netcat-traditional -y"
+   },
+   {
+       "label": "Executables Blocked (running nmap)",
+       "command": "if [[ -f /usr/bin/nmap ]]; then nmap localhost; fi"
+   },
+   {
+       "label": "AMP (installing EICAR)",
+       "command": "curl https://secure.eicar.org/eicar.com -o /eicar.com  && chmod +x /eicar.com  && cat /eicar.com"
+   },
+   {
+       "label": "Reverse Shell (using nc)",
+       "command": "(nc -l -p 8888 &); sleep 1 ; bash -i >& /dev/tcp/localhost/8888 0>&1"
+   },
+   {
+       "label": "kill Reverse Shell",
+       "command": "pkill -ecf nc"
+   }
+]

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Execute Command</title>
+</head>
+<body>
+    <h1>Execute Command</h1>
+
+    <div id="button-container"></div>
+
+    <script>
+        // Fetch commands from the server
+        fetch('/commands')
+        .then(response => {
+            if (response.ok) {
+                return response.json();
+            } else {
+                throw new Error('Failed to fetch commands');
+            }
+        })
+        .then(commands => {
+            const buttonContainer = document.getElementById("button-container");
+
+            commands.forEach(({ label, command }, index) => {
+                const button = document.createElement("button");
+                button.textContent = label;
+                button.style.position = "absolute";
+                button.style.top = `${80 + index * 50}px`;
+                button.style.left = "10px";
+                button.onclick = () => executeCommand(command);
+                buttonContainer.appendChild(button);
+            });
+        })
+        .catch(error => {
+            console.error('Error:', error);
+            alert('Failed to fetch commands');
+        });
+
+        function executeCommand(command) {
+            // Make a request to the server to execute the command
+            fetch('/execute', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    command: command
+                })
+            })
+            .then(response => {
+                if (response.ok) {
+                    alert('Command executed successfully!');
+                } else {
+                    alert('Failed to execute command');
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                alert('Failed to execute command');
+            });
+        }
+    </script>
+
+</body>
+</html>
