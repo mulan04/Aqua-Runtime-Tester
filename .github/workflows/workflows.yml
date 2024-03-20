@@ -27,7 +27,7 @@ jobs:
 
       - name: Build docker image
         run: |
-            echo ${{ env.REPO_IMAGE.TAG }}
+            echo "${{ env.REPO_IMAGE.TAG }}"
             # docker build -t ${{ env.REPO_IMAGE.TAG }}:latest .
       
       # - name: Push docker image
