@@ -8,6 +8,10 @@ on:
     branches: 
       - main
 
+env:
+  TAG:          $(date +"%d%m%y%H%M")
+  REPO_IMAGE:   "mulan04/aqua-runtime-tester"
+
 jobs:
   checkout:
     name: Checkout
@@ -23,8 +27,12 @@ jobs:
           password: ${{ secrets.DOCKER_HUB_PASSWORD }}
 
       - name: Build docker image
-        run: sudo docker build -t mulan04/aqua-runtime-tester:${{ github.sha }} .
+        run: |
+            docker build -t ${{ REPO_IMAGE.TAG }}:${{ env.TAG }} .
+            docker tag ${{ REPO_IMAGE.TAG }}:${{ env.TAG }} ${{ REPO_IMAGE.TAG }}:latest
       
-      - name: Build docker image
-        run: sudo docker push mulan04/aqua-runtime-tester:${{ github.sha }} .   
+      - name: Push docker image
+        run: |
+            docker push ${{ REPO_IMAGE.TAG }}:${{ env.TAG }}
+            docker push ${{ REPO_IMAGE.TAG }}:latest
           
