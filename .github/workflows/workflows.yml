@@ -28,11 +28,11 @@ jobs:
 
       - name: Build docker image
         run: |
-            docker build -t ${{ REPO_IMAGE.TAG }}:${{ env.TAG }} .
-            docker tag ${{ REPO_IMAGE.TAG }}:${{ env.TAG }} ${{ REPO_IMAGE.TAG }}:latest
+            docker build -t ${{ env.REPO_IMAGE.TAG }}:${{ env.TAG }} .
+            docker tag ${{ env.REPO_IMAGE.TAG }}:${{ env.TAG }} ${{ REPO_IMAGE.TAG }}:latest
       
       - name: Push docker image
         run: |
-            docker push ${{ REPO_IMAGE.TAG }}:${{ env.TAG }}
-            docker push ${{ REPO_IMAGE.TAG }}:latest
+            docker push ${{ env.REPO_IMAGE.TAG }}:${{ env.TAG }}
+            docker push ${{ env.REPO_IMAGE.TAG }}:latest
           
