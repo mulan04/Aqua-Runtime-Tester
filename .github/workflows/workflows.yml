@@ -9,7 +9,6 @@ on:
       - main
 
 env:
-  TAG:          $(echo date +"%d%m%y%H%M")
   REPO_IMAGE:   "mulan04/aqua-runtime-tester"
 
 jobs:
@@ -25,6 +24,10 @@ jobs:
         with:
           username: ${{ secrets.DOCKER_HUB_USERNAME }}
           password: ${{ secrets.DOCKER_HUB_PASSWORD }}
+
+      - name: Set Tag
+        run: |
+            echo "TAG=$(echo date +"%d%m%y%H%M")" >> $GITHUB_ENV
 
       - name: Build docker image
         run: |
