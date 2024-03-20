@@ -9,7 +9,7 @@ on:
       - main
 
 env:
-  TAG:          $(date +"%d%m%y%H%M")
+  TAG:          $(echo date +"%d%m%y%H%M")
   REPO_IMAGE:   "mulan04/aqua-runtime-tester"
 
 jobs:
