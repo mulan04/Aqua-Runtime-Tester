@@ -1,5 +1,5 @@
 # Aqua-Runtime-Tester
-App that allows to experiment with the Aqua Container Runtime controls.<br>
+App that allows to experiment with the Aqua Container Runtime policy controls.<br>
 Ammend the commands.json with your bash commands accordingly.
 
 
