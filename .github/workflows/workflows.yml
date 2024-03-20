@@ -26,16 +26,17 @@ jobs:
           password: ${{ secrets.DOCKER_HUB_PASSWORD }}
 
       - name: Set Tag
+        id: set-tag
         run: |
-            echo "TAG=$(echo date +"%d%m%y%H%M")" >> $GITHUB_ENV
+            echo "TAG=$(echo date +"%d%m%y%H%M")" >> $GITHUB_OUTPUT
 
       - name: Build docker image
         run: |
-            docker build -t ${{ env.REPO_IMAGE.TAG }}:${{ env.TAG }} .
-            docker tag ${{ env.REPO_IMAGE.TAG }}:${{ env.TAG }} ${{ env.REPO_IMAGE.TAG }}:latest
+            docker build -t ${{ env.REPO_IMAGE.TAG }}:${{ steps.set-tag.outputs.TAG }} .
+            docker tag ${{ env.REPO_IMAGE.TAG }}:${{ steps.set-tag.outputs.TAG }} ${{ env.REPO_IMAGE.TAG }}:latest
       
       - name: Push docker image
         run: |
-            docker push ${{ env.REPO_IMAGE.TAG }}:${{ env.TAG }}
+            docker push ${{ env.REPO_IMAGE.TAG }}:${{ steps.set-tag.outputs.TAG }}
             docker push ${{ env.REPO_IMAGE.TAG }}:latest
           
