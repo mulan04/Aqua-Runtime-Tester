@@ -30,7 +30,7 @@ spec:
 EOF
 ```
 
-If you use minikube then the Server is running on 
+If you use minikube then the Aqua-Runtime-Tester UI is on 
 ```[bash]
 minikube service list --namespace default --output='json' | jq -r '.[] | select(.Name == "aqua-runtime-tester").URLs[0]'
 ```
