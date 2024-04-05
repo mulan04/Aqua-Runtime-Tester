@@ -7,7 +7,7 @@ const { exec } = require('child_process');
 const server = http.createServer((req, res) => {
     if (req.url === '/') {
         // Read the HTML file
-        fs.readFile('index.html', (err, data) => {
+        fs.readFile(path.join(__dirname, 'index.html'), (err, data) => {
             if (err) {
                 res.writeHead(404, {'Content-Type': 'text/plain'});
                 res.write('File not found');
@@ -20,7 +20,7 @@ const server = http.createServer((req, res) => {
         });
     } else if (req.url === '/commands') {
         // Read the commands JSON file
-        fs.readFile(path.join(__dirname, 'commands.json'), (err, data) => {
+        fs.readFile(path.join(__dirname, 'config', 'commands.json'), (err, data) => {
             if (err) {
                 res.writeHead(500, {'Content-Type': 'text/plain'});
                 res.write('Internal Server Error');
