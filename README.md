@@ -5,7 +5,7 @@ Ammend the commands.json with your bash commands accordingly.
 
 In Docker do
 ```[bash]
-docker run --rm --name aqua-runtime-tester -p 3000:3000 aqua-runtime-tester:latest
+docker run --rm --name aqua-runtime-tester -p 3000:3000 mulan04/aqua-runtime-tester:latest
 ```
 which will expose the UI to http://localhost:3000/
 
