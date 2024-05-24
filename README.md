@@ -18,6 +18,7 @@ helm install --create-namespace --namespace aqua-runtime-tester aqua-runtime-tes
 ---
 <details>
    <summary>To deploy in __K8s__ using __manifests__ do</summary>
+
 ```[bash]
 kubectl create deployment aqua-runtime-tester --image=mulan04/aqua-runtime-tester
 ```
@@ -25,6 +26,7 @@ and to expose the deployment
 ```[bash]
 kubectl expose deployment aqua-runtime-tester --type=LoadBalancer --port=3000
 ```
+
 or
 ```[bash]
 cat << EOF | kubectl apply -f -
@@ -41,6 +43,7 @@ spec:
     targetPort: 3000
 EOF
 ```
+
 If you use minikube then the Aqua-Runtime-Tester UI is on 
 ```[bash]
 minikube service list --namespace default --output='json' | jq -r '.[] | select(.Name == "aqua-runtime-tester").URLs[0]'
