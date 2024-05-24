@@ -16,7 +16,8 @@ helm install --create-namespace --namespace aqua-runtime-tester aqua-runtime-tes
 ```
 
 ---
-To deploy in __K8s__ using __manifests__ do
+<details>
+   <summary>To deploy in __K8s__ using __manifests__ do</summary>
 ```[bash]
 kubectl create deployment aqua-runtime-tester --image=mulan04/aqua-runtime-tester
 ```
@@ -91,3 +92,4 @@ and patch the deployment accordingly
 ```[bash]
 kubectl patch deployment aqua-runtime-tester -p '{"spec":{"template":{"spec":{"volumes":[{"name":"aqua-runtime-tester-config","configMap":{"name":"aqua-runtime-tester-config"}}],"containers":[{"name":"aqua-runtime-tester","volumeMounts":[{"name":"aqua-runtime-tester-config","mountPath":"/app/config"}]}]}}}}'
 ```
+</details>
