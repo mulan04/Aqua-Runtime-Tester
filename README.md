@@ -17,7 +17,7 @@ helm install --create-namespace --namespace aqua-runtime-tester aqua-runtime-tes
 
 ---
 <details>
-   <summary>To deploy in __K8s__ using __manifests__ do</summary>
+   <summary>To deploy in <b>K8s</b> using <b>manifests</b> do</summary>
 
 ```[bash]
 kubectl create deployment aqua-runtime-tester --image=mulan04/aqua-runtime-tester
