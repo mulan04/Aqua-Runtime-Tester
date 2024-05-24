@@ -3,13 +3,18 @@ App that allows to experiment with the Aqua Container Runtime policy controls.<b
 Ammend the commands.json with your bash commands accordingly.
 
 
-In Docker do
+In # Docker do
 ```[bash]
 docker run --rm --name aqua-runtime-tester -p 3000:3000 mulan04/aqua-runtime-tester:latest
 ```
 which will expose the UI to http://localhost:3000/
 
-To deploy in K8s do
+To deploy in K8s using helm do
+```[bash]
+helm install --create-namespace --namespace aqua-runtime-tester aqua-runtime-tester https://github.com/mulan04/Aqua-Runtime-Tester/raw/main/helm/aqua-runtime-tester.tgz
+```
+
+To manually deploy in K8s do
 ```[bash]
 kubectl create deployment aqua-runtime-tester --image=mulan04/aqua-runtime-tester
 ```
