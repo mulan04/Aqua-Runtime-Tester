@@ -20,7 +20,7 @@ To deploy in __K8s__ using __manifests__ do
 ```[bash]
 kubectl create deployment aqua-runtime-tester --image=mulan04/aqua-runtime-tester
 ```
-and to exose the deployment
+and to expose the deployment
 ```[bash]
 kubectl expose deployment aqua-runtime-tester --type=LoadBalancer --port=3000
 ```
