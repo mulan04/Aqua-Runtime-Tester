@@ -14,8 +14,17 @@ which will expose the UI to http://localhost:3000/
 ---
 To deploy in __K8s__ using __helm__ do
 ```[bash]
+helm upgrade --install --create-namespace --namespace aqua-runtime-tester aqua-runtime-tester oci://docker.io/mulan04/aqua-runtime-tester
+```
+or
+<details>
+   <summary></summary>
+
+```[bash]
 helm upgrade --install --create-namespace --namespace aqua-runtime-tester aqua-runtime-tester https://github.com/mulan04/Aqua-Runtime-Tester/raw/main/helm/aqua-runtime-tester.tgz
 ```
+
+</details>
 
 ---
 To deploy in __K8s__ using __manifests__ do <details>
