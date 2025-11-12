@@ -1,0 +1,35 @@
+kind: List
+apiVersion: v1
+items:
+- apiVersion: apps/v1
+  kind: Deployment
+  metadata:
+    labels:
+      app: aqua-runtime-tester
+    name: aqua-runtime-tester
+  spec:
+    selector:
+      matchLabels:
+        app: aqua-runtime-tester
+    template:
+      metadata:
+        labels:
+          app: aqua-runtime-tester
+      spec:
+        containers:
+        - image: mulan04/aqua-runtime-tester
+          imagePullPolicy: Always
+          name: aqua-runtime-tester
+---
+kind: Service
+apiVersion: v1
+metadata:
+  name: aqua-runtime-tester
+spec:
+  selector:
+    app: aqua-runtime-tester
+  type: LoadBalancer  
+  ports:
+  - protocol: TCP
+    port: 3000
+    targetPort: 3000
