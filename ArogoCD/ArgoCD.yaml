@@ -1,0 +1,20 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: aqua-runtime-tester
+  namespace: argocd          # Argo CD's namespace
+spec:
+  project: default           # or your custom AppProject
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: aqua-runtime-tester
+  source:
+    repoURL: https://github.com/mulan04/Aqua-Runtime-Tester.git
+    targetRevision: main
+    path: yaml               # folder containing aqua-runtime-tester.yaml
+    directory:
+      recurse: false         # treat the folder as flat (optional)
+  syncPolicy:
+    automated: {}            # optional: enable auto-sync
+    syncOptions:
+      - CreateNamespace=true # creates aqua-runtime-tester if missing
